@@ -5,13 +5,20 @@ import Cart from './features/cart/Cart'
 import Order from './features/order/Order'
 import CreateOrder from './features/order/CreateOrder'
 import Layout from './ui/Layout'
+import Error from './ui/Error'
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
+    errorElement: <Error />,
     children: [
       { path: '/', element: <Home /> },
-      { path: '/menu', element: <Menu />, loader: menuLoader },
+      {
+        path: '/menu',
+        element: <Menu />,
+        loader: menuLoader,
+        errorElement: <Error />,
+      },
       { path: '/cart', element: <Cart /> },
       { path: '/order/new', element: <CreateOrder /> },
       { path: '/order/:id', element: <Order /> },
