@@ -25,6 +25,7 @@ const slice = createSlice({
       if (!item) return
       item.quantity--
       item.totalPrice = item.quantity * item.unitPrice
+      if (item.quantity === 0) slice.caseReducers.deleteItem(state, action)
     },
     clearCart(state) {
       state.cart = []
